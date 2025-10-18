@@ -1,9 +1,10 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import YouTubePlaylistPlayButton from "./YouTubePlaylistPlayButton.jsx";
 import "./App.css";
 import domtoimage from "dom-to-image";
 import "./quotes.js";
 import AllQuotes from "./quotes.js";
+import Images from "./images.jsx";
 import Spinners from "./Spinners.jsx";
 
 // import {
@@ -26,8 +27,14 @@ function App() {
   const fetchQuote = () => {
     let quoteRandomizer = Math.floor(Math.random() * AllQuotes.length);
     setQuotes(AllQuotes[quoteRandomizer]);
-    setLoading();
+    setLoading(false);
   };
+
+  useEffect(() => {
+    // fetch on mount
+    fetchQuote();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const shareURL = window.location.href;
 
@@ -54,6 +61,19 @@ function App() {
 
   const downloadRef = useRef();
 
+  // Build a safe src for the avatar image.
+  const getAviSrc = (avi) => {
+    if (!avi) return "";
+    if (typeof avi !== "string") return avi; // imported module URL
+    if (avi.startsWith("http") || avi.startsWith("data:")) return avi;
+    if (avi.indexOf("/public/") !== -1) {
+      const rel = avi.slice(avi.indexOf("/public/") + "/public".length);
+      return (process.env.PUBLIC_URL || "") + rel;
+    }
+    if (avi.startsWith("/")) return avi;
+    return (process.env.PUBLIC_URL || "") + "/" + avi;
+  };
+
   const downloadImage = () => {
     const targetElement = downloadRef.current;
     domtoimage.toJpeg(targetElement, { quality: 0.95 }).then((dataUrl) => {
@@ -69,23 +89,16 @@ function App() {
       <div className="main-container">
         {/* FIXME: */}
 
-        <div className="container">
+        <div className="container" onClick={fetchQuote}>
           <div className="App" ref={downloadRef}>
             <div>
               <div className="quote-body">
-                <div className="text">
-                  <blockquote style={{ color: myColor }}>
-                    <q> {quotes.text}</q>
-                  </blockquote>
-                </div>
-                <div className="author-box">
-                  <div className="author-profile">
-                    {" "}
-                    <div>
-                      {" "}
-                      <img className="avi" alt="x" src={quotes.avi}></img>
-                    </div>
-
+                <div className="quote-overlay-container">
+                  <img className="avi" alt={quotes.author || "avatar"} src={getAviSrc(quotes.avi)}></img>
+                  <div className="text-overlay">
+                    <blockquote style={{ color: "white" }}>
+                      <q>{quotes.text}</q>
+                    </blockquote>
                   </div>
                 </div>
               </div>
@@ -93,11 +106,11 @@ function App() {
           </div>
           <div>
 
-            <div className="button-div">
+            {/* <div className="button-div">
               {" "}
               <button
                 className="my-button"
-                onClick={fetchQuote}
+                
                 style={{ backgroundColor: myColor, cursor: "pointer" }}
               >
                 {" "}
@@ -106,8 +119,8 @@ function App() {
               {/* <button className="my-button" onClick={downloadImage}>
                 {" "}
                 Download
-              </button> */}
-            </div>
+              </button> 
+            </div> */}
 
           </div>{" "}
           
