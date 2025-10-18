@@ -74,19 +74,23 @@ function App() {
           <div className="App" ref={downloadRef}>
             <div>
               <div className="quote-body">
-                <div className="text">
-                  <blockquote style={{ color: myColor }}>
-                    <q> {quotes.text}</q>
-                  </blockquote>
+                <div className="quote-overlay-container">
+                  <img
+                    className="avi"
+                    alt={quotes.author || "avatar"}
+                    src={getAviSrc(quotes.avi)}
+                  />
+                  <div className="text-overlay">
+                    <blockquote>
+                      <q>{quotes.text}</q>
+                    </blockquote>
+                  </div>
                 </div>
+
                 <div className="author-box">
                   <div className="author-profile">
-                    {" "}
-                    <div>
-                      {" "}
-                      <img className="avi" alt="x" src={quotes.avi}></img>
-                    </div>
-
+                    <div className="author">{quotes.author}</div>
+                    <div className="author-title">{quotes.title}</div>
                   </div>
                 </div>
               </div>
