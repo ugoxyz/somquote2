@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function YouTubePlaylistPlayButton({embedUrl = "https://open.spotify.com/embed/playlist/49TNdVUOr5RSYs4JBdr0Z9?utm_source=generator",
+export default function YouTubePlaylistPlayButton({embedUrl = "https://open.spotify.com/embed/playlist/0AmLRKyJ6FJConcteHjecR?utm_source=generator",
 height = 400,width = 400
 }) {
 
