@@ -1,4 +1,4 @@
-import Images from "./images";
+import Images from "Images.jsx";
 
 let AllQuotes = [
 

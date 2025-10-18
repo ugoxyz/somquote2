@@ -4,7 +4,7 @@ import "./App.css";
 import domtoimage from "dom-to-image";
 import "./quotes.js";
 import AllQuotes from "./quotes.js";
-import Images from "./images.jsx";
+import Images from './images.jsx';
 import Spinners from "./Spinners.jsx";
 
 function App() {
