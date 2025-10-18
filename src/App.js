@@ -84,12 +84,7 @@ function App() {
                       {" "}
                       <img className="avi" alt="x" src={quotes.avi}></img>
                     </div>
-                    <div className="author" style={{ color: myColor }}>
-                      {quotes.author}
-                    </div>
-                    <div className="author-title" style={{ color: myColor }}>
-                      {quotes.title}
-                    </div>
+            
                   </div>
                 </div>
               </div>
@@ -107,10 +102,10 @@ function App() {
                 {" "}
                 New Quote{" "}
               </button>
-              <button className="my-button" onClick={downloadImage}>
+              {/* <button className="my-button" onClick={downloadImage}>
                 {" "}
                 Download
-              </button>
+              </button> */}
             </div>
             <div className="footer"><Ronin className="logo"/></div>
           </div>{" "}
