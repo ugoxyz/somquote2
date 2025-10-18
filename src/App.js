@@ -7,19 +7,6 @@ import AllQuotes from "./quotes.js";
 import Images from "./images.jsx";
 import Spinners from "./Spinners.jsx";
 
-// import {
-//   FacebookIcon,
-//   FacebookShareButton,
-//   TelegramIcon,
-//   TelegramShareButton,
-//   TwitterIcon,
-//   TwitterShareButton,
-//   WhatsappIcon,
-//   WhatsappShareButton,
-// } from "react-share";
-import Ronin from "./Ronin.jsx";
-
-
 function App() {
   const [quotes, setQuotes] = useState("");
   const [loading, setLoading] = useState(true);
@@ -29,12 +16,6 @@ function App() {
     setQuotes(AllQuotes[quoteRandomizer]);
     setLoading(false);
   };
-
-  useEffect(() => {
-    // fetch on mount
-    fetchQuote();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const shareURL = window.location.href;
 
@@ -93,12 +74,19 @@ function App() {
           <div className="App" ref={downloadRef}>
             <div>
               <div className="quote-body">
-                <div className="quote-overlay-container">
-                  <img className="avi" alt={quotes.author || "avatar"} src={getAviSrc(quotes.avi)}></img>
-                  <div className="text-overlay">
-                    <blockquote style={{ color: "white" }}>
-                      <q>{quotes.text}</q>
-                    </blockquote>
+                <div className="text">
+                  <blockquote style={{ color: myColor }}>
+                    <q> {quotes.text}</q>
+                  </blockquote>
+                </div>
+                <div className="author-box">
+                  <div className="author-profile">
+                    {" "}
+                    <div>
+                      {" "}
+                      <img className="avi" alt="x" src={quotes.avi}></img>
+                    </div>
+
                   </div>
                 </div>
               </div>
