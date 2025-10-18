@@ -6,19 +6,6 @@ import "./quotes.js";
 import AllQuotes from "./quotes.js";
 import Spinners from "./Spinners.jsx";
 
-// import {
-//   FacebookIcon,
-//   FacebookShareButton,
-//   TelegramIcon,
-//   TelegramShareButton,
-//   TwitterIcon,
-//   TwitterShareButton,
-//   WhatsappIcon,
-//   WhatsappShareButton,
-// } from "react-share";
-import Ronin from "./Ronin.jsx";
-
-
 function App() {
   const [quotes, setQuotes] = useState("");
   const [loading, setLoading] = useState(true);
@@ -28,8 +15,6 @@ function App() {
     setQuotes(AllQuotes[quoteRandomizer]);
     setLoading();
   };
-
-  const shareURL = window.location.href;
 
   const colors = [
     "#16a085",
@@ -83,7 +68,7 @@ function App() {
                     {" "}
                     <div>
                       {" "}
-                      <img className="avi" alt="x" src={quotes.avi}></img>
+                      <img className="avi" alt="x" src={quotes}></img>
                     </div>
 
                   </div>
