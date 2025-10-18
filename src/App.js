@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import YouTubePlaylistPlayButton from "./YouTubePlaylistPlayButton.jsx";
 import "./App.css";
 import domtoimage from "dom-to-image";
 import "./quotes.js";
@@ -84,14 +85,14 @@ function App() {
                       {" "}
                       <img className="avi" alt="x" src={quotes.avi}></img>
                     </div>
-            
+
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <div>
-        
+
             <div className="button-div">
               {" "}
               <button
@@ -100,16 +101,19 @@ function App() {
                 style={{ backgroundColor: myColor, cursor: "pointer" }}
               >
                 {" "}
-                New Quote{" "}
+                Click Here{" "}
               </button>
               {/* <button className="my-button" onClick={downloadImage}>
                 {" "}
                 Download
               </button> */}
             </div>
-            <div className="footer"><Ronin className="logo"/></div>
+
           </div>{" "}
+          
         </div>
+        <div className="container2"><YouTubePlaylistPlayButton
+            /></div>
       </div>
     );
   } else {

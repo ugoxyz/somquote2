@@ -6,17 +6,25 @@
 }
 
 .main-container {
-  display: flex;
-  flex-direction: row;
+display: flex;
+  flex-direction: row; /* changed: lay out children side-by-side */
+  flex-wrap: wrap;     /* allow wrapping on small screens */
+  gap: 20px;           /* space between the two containers */
   padding: 10px;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100vw; 
 }
 
-.container {
-  min-height: min-content;
-  padding-bottom: 0px;
-  border-radius: 0px 0px 10px 10px;
+.container, .container2 {
+  flex: 1 1 1 300px; /* grow, shrink, base width */
+  width: 400px;
+  height: 400px;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 2px 2px 2px 2px rgb(70, 70, 70, 0.4);
 }
-
 body {
   height: 100vh;
   display: flex;
@@ -39,7 +47,7 @@ body {
   align-items: center;
   font-weight:600;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 1.3em;
+  font-size: 1.8em;
    margin-bottom: 10px;
   min-height: 150px;
   width: 300px;
@@ -63,12 +71,11 @@ body {
   display: flex;
   color: aliceblue;
   flex-direction: column;
-  border-radius: 10px;
+  border-radius: 20px;
   margin: auto;
   justify-content: center;
   align-items: center;
-  width: 400px;
-  min-height: 350px;
+  height: 400px;
   box-shadow: 2px 2px 2px 2px rgb(70, 70, 70, 0.4);
   /* From https://css.glass */
 }
@@ -115,11 +122,11 @@ blockquote q {
   justify-content: center;
   margin: auto;
   margin-top: 20px;
-  background: rgba(255, 255, 255, 0.3);
+  /* background: rgba(255, 255, 255, 0.3); */
   border-radius: 16px;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 0px solid rgba(255, 255, 255, 0.3);
   color: aliceblue;
   min-height: 50px;
   padding: 10px 0px 10px 0px;
@@ -197,10 +204,10 @@ flex-direction: column;
 
 }
 .avi {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   align-content: flex-start;
-  border-radius: 50px;
+  border-radius: 100px;
 }
 
 .spinner {
